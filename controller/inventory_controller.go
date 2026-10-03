@@ -44,7 +44,7 @@ func (ic *InventoryController) CreateInventory(c *gin.Context) {
 
 // GetInventories returns all inventory items
 func (ic *InventoryController) GetInventories(c *gin.Context) {
-	rows, err := ic.DB.Query("SELECT id, product_id, quantity, sku, location FROM inventory")
+	rows, err := ic.DB.Query("SELECT id, product_id, quantity, sku, location FROM inventory ORDER BY id DESC")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
